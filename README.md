@@ -18,24 +18,14 @@ This tool is designed to facilitate the assessment of the reputation of a given 
    cd IPcheckER
    pip install -r requirements.txt
 
-2. ## Note:
+2. ### prerequisites
 
-To perform the scanning process, it is necessary to adhere to the following formal instructions:
-  
-    a- Ensure that you have the "ips.txt" file available in the current directory. If the file does not exist, create it in the current directory.
-    
-    b- Open the "ips.txt" file using a text editor of your choice.
-    
-    c- Add all the IP addresses that you want to scan into the "ips.txt" file. Each IP address should be listed on a separate line.
-    
-    d- Save and close the "ips.txt" file after adding all the IP addresses.
-  
-  By following these instructions, you will have the "ips.txt" file in the current directory, containing all the IP addresses that need to be scanned. 
+   #### You must add API key for (Virustotal - IBM Xforce - AbuseIPdb - AlienVault) in the code.
+   #### Ensure that you have the "ips.txt" file available in the current directory. If the file does not exist, create it in the current directory and add all IPs which will be scanned.
 
 ## Usage
-  You must add ips.txt in the currunt directory and add all IPs in it for scanning it
-  python IPchecER.py
 
+ ### python IPcheckER.py
 
 ## Contributing
 
