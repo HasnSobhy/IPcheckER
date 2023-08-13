@@ -1,0 +1,6 @@
+Jinja2
+json2html
+requests
+prettytable
+colorama
+tqdm
