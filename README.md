@@ -31,7 +31,3 @@ This tool is designed to facilitate the assessment of the reputation of a given 
 
 Contributions are welcome! If you find a bug or want to enhance the tool's functionality, feel free to open an issue or submit a pull request.
 
-## License
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-Feel free to customize this template further to match the specifics of your repository and tool. Also, ensure that you have an appropriate license file in your repository if you choose to use the MIT License or any other license.
