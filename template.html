@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>VirusTotal Report for IP Address</title>
+    <style>
+  table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+}
+
+th, td {
+  border: 2px solid #1b508b;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #ccc;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+    </style>
+</head>
+
+<body>
+   <font color="#000000"> <center><h1> Report for {{ip_address}}</h1></center></font>
+
+   
+   <font size=5 > <b> General Information:</b> </font>
+   <br>
+    <table>
+        <thead>
+            <tr>
+                <th>Attribute</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+            
+        <tbody>
+            <tr>
+                <td>IP Address</td>
+                <td>{{ip_address}}</td>
+            </tr>
+            <tr>
+                <td>AS-owner</td>
+                <td>{{owner}}</td>
+            </tr>
+            <tr>
+                <td>Country</td>
+                <td>{{country}}</td>
+            </tr>
+            <tr>
+                <td>Reputation</td>
+                <td>{{reputation}}</td>
+            </tr>
+	    <tr>
+                <td>Last Analysis Stats</td>
+                <td>{{last_analysis_stats}}</td>
+            </tr>
+	    
+            <tr>
+                <td>Validity</td>
+                <td>{{validity}}</td>
+            </tr>
+	
+	     <tr>
+                <td>Issuer</td>
+                <td>{{issuer}}</td>
+            </tr>
+
+	     <tr>
+                <td>Subject</td>
+                <td>{{subject}}</td>
+            </tr>
+	   
+	    <tr>
+                <td>Tags</td>
+                <td>{{tags}}</td>
+
+            </tr>
+			
+
+	     <tr>
+                <td>Last Analysis Date</td>
+                <td>{{last_analysis_date}}</td>
+            </tr>
+
+	       <tr>
+                <td>Network</td>
+                <td>{{network}}</td>
+                
+            </tr>
+
+    </table>
+	
+  <br>
+  <font size=5 > <b> Referrer    Files:</b> </font>
+  <br>
+
+	
+	   <table>
+	    <tr>
+                <th style="text-align: center;">File Name</th>
+                <th style="text-align: center;">File Type</th>
+		<th style="text-align: center;">File Size</th>
+		<th style="text-align: center;">File Hash</th>
+        <th style="text-align: center;">Ratio</th>
+            </tr>
+	   
+	     {% for item in item_list %}
+   		 <tr>
+   	   	<td>{{ item.filename}}</td>
+     	 	<td>{{ item.filetype }}</td>
+		<td>{{ item.filesize}}</td>
+     	 	<td>{{ item.filehash}}</td>
+		<td>{{ item.detectionratio}}</td>
+    		</tr>
+  	     {% endfor %}
+
+ 	</table>
+
+
+     <br>
+     <font size=5 > <b> Communicating Files:</b> </font>
+     <br>
+     <table>
+	    <tr>
+        <th style="text-align: center;">File Name</th>
+        <th style="text-align: center;">File Type</th>
+		<th style="text-align: center;">File Size</th>
+		<th style="text-align: center;">File Hash</th>
+        <th style="text-align: center;">Reputation</th>
+        <th style="text-align: center;">magic</th>
+        <th style="text-align: center;">packers</th>
+        <th style="text-align: center;">tags</th>
+        <th style="text-align: center;">sandbox_verdicts</th>
+        </tr>
+	   
+	     {% for comm in comm_list %}
+   		 <tr>
+
+     	<td>{{ comm.name }}</td>
+		<td>{{ comm.type_description}}</td>
+     	<td>{{ comm.size}}</td>
+		<td>{{ comm.md5}}</td>
+		<td>{{ comm.reputation}}</td>
+		<td>{{ comm.magic}}</td>
+		<td>{{ comm.packers}}</td>
+		<td>{{ comm.type_tags}}</td>
+		<td>{{ comm.sandbox_verdicts}}</td>
+    		</tr>
+  	     {% endfor %}
+
+        
+
+ 	</table>
+
+
+     <br>
+     <font size=5 > <b> Comments:</b> </font>
+     <br>
+     {{table_html}}
+            <!-- Add more rows for other attributes as needed -->
+        </tbody>
+    </table>
+</body>
+</html>
