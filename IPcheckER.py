@@ -12,15 +12,6 @@ import time
 import os
 
 
-# Define API keys for each service
-VT_API_KEY = ""
-key1IBM = ""
-key2IBM = ""
-api_key = f"{key1IBM}:{key2IBM}"
-IBM_API_KEY = f"Basic {base64.b64encode(api_key.encode()).decode()}"
-ABUSEIPDB_API_KEY = ""
-OTX_API_KEY = ''
-ip_address_pattern = re.compile(r'\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b')
 
 
 # Define a list of IP addresses to check
@@ -29,9 +20,29 @@ data=myfile.read()
 ips = data.split("\n")
 myfile.close()
 
-
+VTreport="D:/VT.html"
+IBMreport="D:/IBM.html"
 
 table = PrettyTable()
+
+def get_variable_values(variables):
+    
+    try:
+        # Try to open the file in read mode
+        with open("apis.json", "r") as file:
+            variable_values = json.load(file)
+    except FileNotFoundError:
+        # If the file doesn't exist, prompt the user for the values
+        variable_values = {}
+        for variable in variables:
+            value = input(f"Enter the value for '{variable}': ")
+            variable_values[variable] = value
+
+        # Save the values to the file
+        with open("apis.json", "w") as file:
+            json.dump(variable_values, file)
+    
+    return variable_values
 
 
 def cmdTable(x,m,f,y,z,h,l):
@@ -399,6 +410,26 @@ def is_private_ip(ip_address):
         return False
     else:
         return True
+
+
+
+# Define API keys for each service
+
+variables = ['VirusTotal_API_KEY', 'ABUSEIPDB_API_KEY', 'OTX_API_KEY', 'IBMKey1', 'IBMKey2']
+
+# Get variable values from the user or file
+values = get_variable_values(variables)
+
+# Access and use the stored values later in your code
+VT_API_KEY = values['VirusTotal_API_KEY']
+ABUSEIPDB_API_KEY = values['ABUSEIPDB_API_KEY']
+OTX_API_KEY = values['OTX_API_KEY']
+key1 = values['IBMKey1']
+key2 = values['IBMKey2']
+api_key = f"{key1}:{key2}"
+IBM_API_KEY = f"Basic {base64.b64encode(api_key.encode()).decode()}"
+
+ip_address_pattern = re.compile(r'\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b')
 
 
 
