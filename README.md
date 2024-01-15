@@ -20,7 +20,8 @@ This tool is designed to facilitate the assessment of the reputation of a given 
 
 2. ### prerequisites
 
-   #### You must add API key for (Virustotal - IBM Xforce - AbuseIPdb - AlienVault) in the code.
+   #### You must add API key for (Virustotal - IBM Xforce - AbuseIPdb - AlienVault) for the first time only. 
+
    #### Ensure that you have the "ips.txt" file available in the current directory. If the file does not exist, create it in the current directory and add all IPs which will be scanned.
 
 ## Usage
