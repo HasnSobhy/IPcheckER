@@ -4,3 +4,4 @@ requests
 prettytable
 colorama
 tqdm
+pyhtml2pdf
