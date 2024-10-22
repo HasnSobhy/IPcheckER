@@ -48,7 +48,7 @@ def get_variable_values(variables):
 def cmdTable(x,m,f,y,z,h,l):
  
     # add columns to the table
-    table.field_names = [ "IP","country" ,"VirusTotal", "Xforce", "AbuseIPDB", "AlienVault","category" ]
+    table.field_names = [ "IP","country" ,"VirusTotal", "Owner", "AbuseIPDB", "AlienVault","issuer" ]
 
     # add rows to the table
     table.add_row([x,m,f,y,z,h,l])
@@ -443,13 +443,13 @@ for ip in tqdm(ips, desc="Processing", unit="IP" ):
 
         if (is_private_ip(ip)):
             VTreputation,VTcountry=getVTreputation(ip)
-            IBMreputation,IBMcategory=getIBMreputation(ip)
+            #IBMreputation,IBMcategory=getIBMreputation(ip)
         
             ABUSErepuation=getABUSEreputation(ip)
             communityscoreAV=GetAlienVaultCS(ip,OTX_API_KEY)
+            reputation,country,asowner,lastanalysis,validate,issuer,subject,tags,lastAnalysisDate,network=getInfo(ip)
             
-            
-            finalTable= cmdTable(ip,VTcountry,VTreputation,IBMreputation,ABUSErepuation,communityscoreAV,IBMcategory)
+            finalTable= cmdTable(ip,VTcountry,VTreputation,asowner,ABUSErepuation,communityscoreAV,issuer)
     time.sleep(0.5)
 tqdm()
 #print(Fore.GREEN + Back.BLACK + Style.DIM )
