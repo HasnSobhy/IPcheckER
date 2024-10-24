@@ -415,7 +415,7 @@ def is_private_ip(ip_address):
 
 # Define API keys for each service
 
-variables = ['VirusTotal_API_KEY', 'ABUSEIPDB_API_KEY', 'OTX_API_KEY', 'IBMKey1', 'IBMKey2']
+variables = ['VirusTotal_API_KEY', 'ABUSEIPDB_API_KEY', 'OTX_API_KEY']
 
 # Get variable values from the user or file
 values = get_variable_values(variables)
@@ -424,10 +424,6 @@ values = get_variable_values(variables)
 VT_API_KEY = values['VirusTotal_API_KEY']
 ABUSEIPDB_API_KEY = values['ABUSEIPDB_API_KEY']
 OTX_API_KEY = values['OTX_API_KEY']
-key1 = values['IBMKey1']
-key2 = values['IBMKey2']
-api_key = f"{key1}:{key2}"
-IBM_API_KEY = f"Basic {base64.b64encode(api_key.encode()).decode()}"
 
 ip_address_pattern = re.compile(r'\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b')
 
